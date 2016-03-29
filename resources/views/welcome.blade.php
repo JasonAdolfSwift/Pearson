@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Hello World</div>
+                <div class="title">暂时没有商品推荐给您</div>
             </div>
         </div>
     </body>

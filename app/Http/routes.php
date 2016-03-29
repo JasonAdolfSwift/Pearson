@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',  'HomePageController@index');
+Route::get('/register', 'UserRegisterController@index');
+Route::get('/products', 'AllProductsController@show');
+Route::get('/show_products', 'ShowProductsController@index');
+Route::get('/recommend_products', 'RecommendProductsController@index');
+Route::get('/product/{id}', 'ProductDetailController@show');
+
+Route::post('/register/create', 'UserRegisterController@create');
+Route::post('/login', 'UserLoginController@index');
+Route::post('/evaluation/{product_id}/{user_id}', 'UserEvaluationController@index');
 
 /*
 |--------------------------------------------------------------------------
