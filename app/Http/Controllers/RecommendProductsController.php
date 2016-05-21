@@ -141,7 +141,7 @@ class RecommendProductsController extends Controller
 
         if ($pearsonArr[$similarUsr] <= 0)
         {
-            return "暂时没有商品可以推荐给您";
+            return "暂时没有商品可以推荐给您,推荐您在看商品的同时多做出一些评价～";
         }
 
         $objUserProductArr = DB::select('select product_id from user_evalueations WHERE user_id = ?', [$_COOKIE['user_id']]);
@@ -153,6 +153,11 @@ class RecommendProductsController extends Controller
         $commonProductId = array_intersect($objUserProductArr,$otherUserProductArr);
 
         $preRecommendProducts = DB::table('user_evalueations')->where('user_id', '=', $similarUsr)->whereNotIn('product_id', $commonProductId)->get();
+
+        if (count($preRecommendProducts) == 0)
+        {
+            return "暂时没有商品可以推荐给您,你可以自行浏览～ ^_^";
+        }
 
         $simAtoB = $pearsonArr[$similarUsr];
 
