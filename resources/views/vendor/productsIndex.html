@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="/PearSon/public/vendor/jquery.multiselect2side/dist/css/jquery.multiselect2side.css"  type="text/css">
     <link rel="stylesheet" href="/PearSon/public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" type="text/css"/>
     <link rel="stylesheet" href="/PearSon/public/asset/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/vendor/slider/slider.css" type="text/css"/>
     <script type="text/javascript" src="/PearSon/public/vendor/jquery/dist/jquery.js"></script>
     <script src="/PearSon/public/asset/js/ajax.js"></script>
+    <script src="/PearSon/public/vendor/slider/slider.min.js"></script>
     <script src="/PearSon/public/vendor/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/PearSon/public/vendor/doT/doT.min.js"></script>
     <script src="/PearSon/public/vendor/simplePagination/jquery.simplePagination.min.js"></script>
     <script src="/PearSon/public/vendor/igrowl/dist/js/igrowl.min.js"></script>
-    <script src="/PearSon/public/vendor/Echart/dist/echarts.js"></script>
     <script src="/PearSon/public/asset/js/app.js"></script>
 </head>
 <body>
@@ -47,34 +48,66 @@
 
     </script>
 </header>
-<h2 align="center" id="all">全部商品</h2>
-<script>
-    $.ajax({
-        url: "/show_products",
-        type: "GET",
-        dataType:"html",
-        success: function (data) {
-            $('#all').after(data);
-        },
-        error: function (a, b, c) {
-            /*alert("出错了...请联系开发人员")*/
-        }
-    })
-</script>
-<hr/>
-<h2 align="center" id="recommend">为您推荐</h2>
-<script>
-    $.ajax({
-        url: "/recommend_products",
-        type: "GET",
-        dataType:"html",
-        success: function (data) {
-            $('#recommend').after(data);
-        },
-        error: function (a, b, c) {
-          /*  alert("出错了...请联系开发人员")*/
-        }
-    })
+<div>
+    <h2 align="center"   id="recommend">为您推荐</h2>
+    <div id="demo3" class="slideBox">
+        <ul class="items">
+            <li><a href="" title="这里是测试标题一"><img src="/PearSon/public/lib/img/1.jpg"></a></li>
+            <li><a href="" title="这里是测试标题二"><img src="/PearSon/public/lib/img/2.jpg"></a></li>
+            <li><a href="" title="这里是测试标题三"><img src="/PearSon/public/lib/img/3.jpg"></a></li>
+            <li><a href="" title="这里是测试标题四"><img src="/PearSon/public/lib/img/4.jpg"></a></li>
+            <li><a href="" title="这里是测试标题五"><img src="/PearSon/public/lib/img/5.jpg"></a></li>
+        </ul>
+    </div>
+
+</div>
+
+<h2 align="center" >全部商品</h2>
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+            <img src="..." alt="...">
+        </a>
+    </div>
+    ...
+</div>
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+            <img src="..." alt="...">
+        </a>
+    </div>
+    ...
+</div>
+<div class="row">
+    <div class="col-xs-6 col-md-3">
+        <a href="#" class="thumbnail">
+            <img src="..." alt="...">
+        </a>
+    </div>
+    ...
+</div>
+<script type="text/javascript">
+    jQuery(function($){
+
+
+        $('#demo3').slideBox({
+
+            duration : 0.3,//滚动持续时间，单位：秒
+
+            easing : 'linear',//swing,linear//滚动特效
+
+            delay : 1,//滚动延迟时间，单位：秒
+
+            hideClickBar : true,//不自动隐藏点选按键
+
+            clickBarRadius : 10
+
+        });
+
+
+    });
+
 </script>
 
 </body>
