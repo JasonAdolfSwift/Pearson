@@ -7,7 +7,7 @@ html, body { font-family:"微软雅黑"}
  * Author: jena
  * Demo: http://ishere.cn/demo/jquery.slidebox/
  */
-div.slideBox{ position:relative; width:670px; height:300px; overflow:hidden;}
+div.slideBox{ position:relative; width:60%; height:300px; overflow:hidden;}
 div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
 div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
 div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
@@ -21,5 +21,8 @@ div.slideBox div.tips div.nums a{ display:inline-block; >float:left/*For IE.ADD.
 div.slideBox div.tips div.nums a.active{ background-color:#093;}
 
 .slideBox{
+    margin: 0 auto;
+}
+#showAll{
     margin: 0 auto;
 }

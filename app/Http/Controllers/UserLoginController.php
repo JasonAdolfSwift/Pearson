@@ -12,11 +12,11 @@ class UserLoginController extends Controller
     //
     public function index()
     {
-        $user = User::where("email", "=",$_POST['email'])->first();
+        $user = User::where("name", "=",$_POST['username'])->first();
 
         if ( !is_null($user) )
         {
-            if ($user->password == $_POST['Pword'])
+            if ($user->password == $_POST['password'])
             {
                 setcookie("user_id", $user->id, 0, "/");
                 setcookie("user_name", $user->name, 0, "/");
@@ -27,18 +27,34 @@ class UserLoginController extends Controller
 
                 DB::update('update users set average_rate = ? WHERE id = ?', [$average, $user->id]);
 
-                return view('products')
-                    ->with('user_name', $_COOKIE['user_name'])
-                    ->with('user_id', $_COOKIE['user_id']);
+                $resData = [];
+
+                $resData['status'] = "success";
+                $resData['url'] = "/getProductCount";
+                $resData['username'] = $_COOKIE['user_name'];
+                $resData['userId'] = $_COOKIE['user_id'];
+
+                return $resData;
             }
             else
             {
-                return view('password_error');
+                $resData['status'] = "failed";
+                $resData['msg'] = "密码错误";
+                return $resData;
             }
         }
         else
         {
-            return view('find_no_user');
+            $resData['status'] = "failed";
+            $resData['msg'] = "用户不存在";
+            return $resData;
         }
+    }
+
+    public function verify()
+    {
+        return view('products')
+            ->with('user_name', $_COOKIE['user_name'])
+            ->with('user_id', $_COOKIE['user_id']);
     }
 }

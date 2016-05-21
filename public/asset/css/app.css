@@ -337,7 +337,6 @@ body{
     line-height: 14px;
     vertical-align: middle;
     background-color: #f6f8f8;
-    background-image: url("../tpl/img/bootstrap-custom-icons.jpg");
     background-position: 14px 14px;
     background-repeat: no-repeat;
 }
@@ -353,4 +352,7 @@ body{
 .cus-file{background-position:-3px -115px  }
 #indexBody  tr td {
     vertical-align: middle !important;
+}
+.i-switch i:after{
+    left:-0.5px !important;
 }

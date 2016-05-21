@@ -20,19 +20,27 @@ class UserRegisterController extends Controller
     {
         //根据前端页面传递来的表单来处理数据
         $user=new User;
-        $user->name = $_POST['Uname'];
+        $user->name = $_POST['username'];
         $user->email = $_POST['email'];
-        $user->password = $_POST['Pword'];
+        $user->password = $_POST['password'];
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
 
         if ($user->save() == true)
         {
-            return view('register_success');
+            $data = [];
+
+            $data['status'] = "success";
+            $data['url'] = "/";
+
+            return $data;
         }
         else
         {
-            return "Register Failed";
+            $data['status'] = "failed";
+            $data['msg'] = "注册失败";
+
+            return $data;
         }
     }
 }

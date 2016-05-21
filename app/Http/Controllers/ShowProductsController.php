@@ -9,11 +9,72 @@ use App\Http\Requests;
 class ShowProductsController extends Controller
 {
     //
-    public function index()
+    public function getProductCount()
     {
+        $pageSize = 8;
+
         $data = [];
-        $data['products'] = Product::where('id', '<', 100)->take(100)->get();
-        $data['user_name'] = $_COOKIE['user_name'];
-        return view("show_products", $data);
+        $data['prodectsCount'] = Product::all()->count();
+
+        $productsCount = $data['prodectsCount'];
+
+        $pageCount = 1;
+        if ($productsCount > $pageSize) {
+            $pageCount = intval($productsCount / $pageSize + 1);
+        }
+
+        $data['pageCount'] = $pageCount;
+        $data['username'] = $_COOKIE['user_name'];
+        $data['pageSize'] = $pageSize;
+        $data['status'] = "success";
+        $data['msg'] = "成功";
+        return $data;
+    }
+
+    public function queryProductsPage()
+    {
+        $showAllFlag = $_GET['showAllFlag'];
+
+        $data = [];
+
+        if ($showAllFlag != "true")
+        {
+            $pageNumber = $_GET['pageNumber'];
+            $pageSize = 8;
+            $startIdx = ($pageNumber - 1) * $pageSize;
+
+            $data['prodectsCount'] = Product::all()->count();
+
+            $productsCount = $data['prodectsCount'];
+
+            $pageCount = 1;
+            if ($productsCount > $pageSize) {
+                $pageCount = intval($productsCount / $pageSize + 1);
+            }
+
+            $data['pageCount'] = $pageCount;
+
+            $data['products'] = Product::where('id', '>', $startIdx)->take($pageSize)->get();
+            $data['username'] = $_COOKIE['user_name'];
+            $data['pageSize'] = $pageSize;
+            $data['status'] = "success";
+            $data['msg'] = "成功";
+
+        } else {
+            $data['products'] = Product::all();
+            $data['username'] = $_COOKIE['user_name'];
+            $data['status'] = "success";
+            $data['msg'] = "成功";
+        }
+
+
+        return $data;
+    }
+
+    public function show()
+    {
+        $username = $_COOKIE['user_name'];
+
+        return view('products')->with('username', $username);
     }
 }

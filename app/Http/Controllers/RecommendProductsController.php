@@ -156,7 +156,10 @@ class RecommendProductsController extends Controller
 
         if (count($preRecommendProducts) == 0)
         {
-            return "暂时没有商品可以推荐给您,你可以自行浏览～ ^_^";
+
+            $resData['status'] = "success";
+            $resData['data'] = Product::all();
+            return $resData;
         }
 
         $simAtoB = $pearsonArr[$similarUsr];
@@ -180,7 +183,11 @@ class RecommendProductsController extends Controller
 
         $recommendProduct = Product::where('id', '=', $recommendProductId)->first();
 
-        return view("show_recommend")->with('recommendProduct', $recommendProduct);
+        $data = [];
+
+        $resData['status'] = "success";
+        $resData['data'] = $recommendProduct;
+        return $resData;
     }
 }
 

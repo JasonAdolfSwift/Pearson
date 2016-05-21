@@ -12,16 +12,17 @@
 */
 
 Route::get('/',  'HomePageController@index');
+Route::get('/products', 'ShowProductsController@show');
 Route::get('/register', 'UserRegisterController@index');
-Route::get('/products', 'AllProductsController@show');
-Route::get('/show_products', 'ShowProductsController@index');
+Route::get('/getProductCount', 'ShowProductsController@getProductCount');
+Route::get('/showProductsPage', 'ShowProductsController@queryProductsPage');
 Route::get('/recommend_products', 'RecommendProductsController@index');
 Route::get('/product/{id}', 'ProductDetailController@show');
 
 Route::post('/register/create', 'UserRegisterController@create');
 Route::post('/login', 'UserLoginController@index');
 Route::post('/evaluation/{product_id}/{user_id}', 'UserEvaluationController@index');
-
+Route::post('/verify', 'UserLoginController@verify');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

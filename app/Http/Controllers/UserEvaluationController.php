@@ -19,7 +19,7 @@ class UserEvaluationController extends Controller
             $record = new User_evalueation;
             $record->user_id = $user_id;
             $record->product_id = $product_id;
-            $record->score = $_POST['value'];
+            $record->score = $_POST['values'];
 
             if ($record->save() != true)
             {
@@ -28,7 +28,7 @@ class UserEvaluationController extends Controller
         }
         else
         {
-            $record->score = $_POST['value'];
+            $record->score = $_POST['values'];
             if ($record->save() != true)
             {
                 return "评价失败，请联系开发人员!";
