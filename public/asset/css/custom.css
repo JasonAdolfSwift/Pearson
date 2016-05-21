@@ -1,0 +1,94 @@
+textarea {
+    resize: none;
+}
+.p-n {
+	padding: 0 !important;
+}
+.p-r-1{
+	padding-right: 1px !important;
+}
+.b-r-n {
+	border-right:none;
+}
+.confirm-btns {
+	display: none;
+}
+.m-t-13 {
+	margin-top: 13px;
+}
+.m-b-n {
+	margin-bottom: 0;
+}
+.select-radius-none {
+	border-radius: 0;
+  	-webkit-appearance: none;
+}
+
+/*Add by haochen */
+.add-task-label{
+    width: 150px;
+    padding-right: 15px;
+}
+.inline-block{
+    display: inline-block;
+}
+.add-task-name{
+    width: 300px;
+}
+.add-task-remark{
+    width: 500px;
+}
+.add-task-timeout{
+    width: 100px;
+}
+.command-type-div {
+    width: 205px;
+}
+.command-width{
+    width: 500px;
+}
+.param-label{
+    width: 35px;
+}
+.param-input{
+    width: 80px;
+}
+.path-label{
+    width: 60px;
+}
+.path-input{
+    width: 80px;
+}
+.authority-label{
+    width: 35px;
+}
+.authority-input{
+    width: 60px;
+}
+.user-label{
+    width: 60px;
+}
+.user-input{
+    width: 80px;
+}
+.custom-user-div{
+    width: 100px;
+}
+.plus-minus-div{
+    vertical-align: top;
+    margin-left: 10px;
+}
+.skip-label{
+    width: 60px;
+    padding-left: 5px;
+    display: inline-block;
+}
+.fail{
+    color: #F00;
+}
+.success{
+    color: #0F0;
+}
+
+
+

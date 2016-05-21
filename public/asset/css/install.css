@@ -1,0 +1,132 @@
+@charset "utf-8";
+html {
+    overflow-y: auto;
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+
+}
+
+.operate a {
+    font-family: "microsoft yahei";
+    font-size: 16px !important;
+    font-weight: 300;
+    color: black;
+}
+
+.operate ul li {
+    display: inline;
+    padding-left: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    height: 43px;
+    line-height: 43px;
+    border: 1px solid #d2d2d2;
+    border-radius: 8px 8px 8px 8px;
+    background-color: #F5F5F5;
+    color: black;
+}
+
+.operate ul li:hover {
+    color: #8caf00;
+    padding-left: 40px;
+    text-decoration: none;
+}
+
+.operate ul .active {
+    background-color: #4169E1;
+}
+
+.operate ul .active a {
+    color: #F5F5F5;
+}
+
+.installedSystem {
+    width: 100%;
+}
+
+.form-group label {
+    padding-right: 0px !important;
+}
+
+/*进度条*/
+.barline {
+    width: 150px;
+    background: #FFF;
+    border: 2px solid #4DBF7D;
+    height: 12px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+#barlinePercent {
+    display: inline-block;
+    color: #4DBF7D;
+    font-size: 12px;
+}
+
+.barline #line {
+    float: left;
+    height: 9px;
+    overflow: hidden;
+    background-color: #4DBF7D;
+    border-radius: 8px;
+}
+
+.barlineDetail {
+    display: block;
+}
+
+#barlineMsg {
+    display: inline-block;
+    color: #4DBF7D;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    background: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+}
+
+.progressBar {
+    border: solid 2px #86A5AD;
+    background: white url('/gauss/asset/tpl/img/loading.gif') no-repeat 10px 10px;
+}
+
+.progressBar {
+    display: block;
+    width: 240px;
+    height: 28px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -74px;
+    margin-top: -14px;
+    padding: 10px 30px 30px 50px;
+    text-align: left;
+    line-height: 27px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 2001;
+}
+
+.installedDetailTitle .title {
+    background-color: #DCDCDC !important;
+    width: 100px !important;
+}
+
+.installedDetailTitle .content {
+    background-color: rgba(220, 220, 220, 0.39) !important;
+}

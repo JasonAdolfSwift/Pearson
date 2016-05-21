@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/PearSon/public/vendor/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/lib/css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/lib/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/vendor/font-awesome/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/vendor/igrowl/dist/css/igrowl.min.css" type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/igrowl/dist/css/fonts/feather.css" type="text/css">
+    <link href="/PearSon/public/vendor/animate.css/animate.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/jquery.multiselect2side/dist/css/jquery.multiselect2side.css"  type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/asset/css/app.css" type="text/css"/>
+    <script type="text/javascript" src="/PearSon/public/vendor/jquery/dist/jquery.js"></script>
+    <script src="/PearSon/public/asset/js/ajax.js"></script>
+    <script src="/PearSon/public/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/PearSon/public/vendor/doT/doT.min.js"></script>
+    <script src="/PearSon/public/vendor/simplePagination/jquery.simplePagination.min.js"></script>
+    <script src="/PearSon/public/vendor/igrowl/dist/js/igrowl.min.js"></script>
+    <script src="/PearSon/public/vendor/Echart/dist/echarts.js"></script>
+    <script src="/PearSon/public/asset/js/app.js"></script>
+</head>
+<body>
+<header id="header" class="app-header navbar" role="menu">
+    <div class="navbar-header bg-blue-dk">
+        <a href="" class="navbar-brand text-lt">
+            Pearson
+        </a>
+    </div>
+    <div class="collapse pos-rlt navbar-collapse box-shadow bg-blue">
+        <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown">
+            <img src="" data-toggle="tooltip" data-placement="left" title=""  class="avatar" style="width: 20px;height: 20px;display: inline-block">
+            <i class="caret"></i>
+        </a>
+        <ul class="dropdown-menu pull-right">
+            <li>
+                <a href="" class="signOut"><b>退出</b></a>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(".signOut").click(function(){
+            window.close()
+        })
+
+    </script>
+</header>
+<h2 align="center" id="all">全部商品</h2>
+<script>
+    $.ajax({
+        url: "/show_products",
+        type: "GET",
+        dataType:"html",
+        success: function (data) {
+            $('#all').after(data);
+        },
+        error: function (a, b, c) {
+            /*alert("出错了...请联系开发人员")*/
+        }
+    })
+</script>
+<hr/>
+<h2 align="center" id="recommend">为您推荐</h2>
+<script>
+    $.ajax({
+        url: "/recommend_products",
+        type: "GET",
+        dataType:"html",
+        success: function (data) {
+            $('#recommend').after(data);
+        },
+        error: function (a, b, c) {
+          /*  alert("出错了...请联系开发人员")*/
+        }
+    })
+</script>
+
+</body>
+</html>

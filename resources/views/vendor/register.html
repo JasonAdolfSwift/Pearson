@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person - 注册</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/PearSon/public/vendor/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/lib/css/font.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/lib/css/app.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/vendor/font-awesome/css/font-awesome.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/vendor/igrowl/dist/css/igrowl.min.css" type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/igrowl/dist/css/fonts/feather.css" type="text/css">
+    <link href="/PearSon/public/vendor/animate.css/animate.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/jquery.multiselect2side/dist/css/jquery.multiselect2side.css"  type="text/css">
+    <link rel="stylesheet" href="/PearSon/public/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" type="text/css"/>
+    <link rel="stylesheet" href="/PearSon/public/asset/css/app.css" type="text/css"/>
+    <script type="text/javascript" src="/PearSon/public/vendor/jquery/dist/jquery.js"></script>
+    <script src="/PearSon/public/asset/js/ajax.js"></script>
+    <script src="/PearSon/public/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/PearSon/public/vendor/doT/doT.min.js"></script>
+    <script src="/PearSon/public/vendor/simplePagination/jquery.simplePagination.min.js"></script>
+    <script src="/PearSon/public/vendor/igrowl/dist/js/igrowl.min.js"></script>
+    <script src="/PearSon/public/vendor/Echart/dist/echarts.js"></script>
+</head>
+<body>
+<div class="app app-header-fixed  app-aside-fixed">
+    <header id="header" class="app-header navbar bg-black">
+        <div class="container-fluid">
+            <div class="navbar-header" style="width:300px;">
+                <a class="navbar-brand text-lt" href="/">
+                    Person
+                </a>
+                    <span class="text-md" style="color:#fff;">
+                        <i class="fa fa-ellipsis-v m-r-md"></i>注册
+                    </span>
+            </div>
+        </div>
+    </header>
+    <div id="content" class="app-content" role="main">
+        <div class="app-content-body">
+            <div class="wrapper-lg m-t-lg">
+                <div class="form-horizontal" name="form">
+                    <div class="form-group first-step">
+                        <label class="col-sm-3 control-label">
+                            用户名
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" placeholder="请输入用户名" ng-model="ctrl.domain" id="domain" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">
+                            密码
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" placeholder="请输入密码" ng-model="ctrl.phone" id="phone" required />
+                        </div>
+                    </div>
+                    <div class="form-group third-step ">
+                        <label class="col-sm-3 control-label">
+                            确认密码
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="password" id="confirmPwd" class="form-control" placeholder="请再次输入密码" required />
+                        </div>
+                    </div>
+                    <div class="form-group third-step ">
+                        <label class="col-sm-3 control-label">
+                            邮箱
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="email" id="" class="form-control" placeholder="请输入邮箱" required />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-sm-offset-3 col-sm-4">
+                            <a class="btn btn-success w-xs" id="subBtn">提交</a>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer" class="app-footer m-l-none" role="footer">
+    <div class="wrapper b-t bg-light">
+        © 2015 Copyright &middot; Powered By SPT
+    </div>
+</footer>
+<script>
+    var getUrlParam = function(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return '';
+    }
+    var goLogin = function() {
+        var redirect = "";
+        var lg = $.ajax({
+            url: "verify",
+            type: "POST",
+            dataType: "json",
+            data: {
+                redirect: getUrlParam("redirect"),
+                userName: $("#username").val(),
+                password: $("#password").val()
+            }
+        });
+        $("#login").attr("disabled", true);
+        lg.done(function(o) {
+            $("#login").attr("disabled", false);
+            if (o.code == "200") {
+                if (o.msg) {
+                    location.href = o.msg;
+                } else {
+                    location.href = "";
+                }
+            } else {
+                alert(o.msg);
+            }
+        })
+        lg.fail(function() {
+            alert("system error");
+        })
+    }
+    $("#login").bind("click", goLogin);
+    document.onkeydown = function(event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            goLogin();
+        }
+    }
+</script>
+</body>
+</html>
