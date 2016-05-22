@@ -14,7 +14,7 @@ class ShowProductsController extends Controller
         $pageSize = 8;
 
         $data = [];
-        $data['prodectsCount'] = Product::all()->count();
+        $data['prodectsCount'] = Product::where('id', '>', 1)->count();
 
         $productsCount = $data['prodectsCount'];
 
@@ -43,7 +43,7 @@ class ShowProductsController extends Controller
             $pageSize = 8;
             $startIdx = ($pageNumber - 1) * $pageSize;
 
-            $data['prodectsCount'] = Product::all()->count();
+            $data['prodectsCount'] = Product::where('id', '>', 0)->count();
 
             $productsCount = $data['prodectsCount'];
 
@@ -61,7 +61,7 @@ class ShowProductsController extends Controller
             $data['msg'] = "成功";
 
         } else {
-            $data['products'] = Product::all();
+            $data['products'] = Product::where('id', '>', 0)->get();
             $data['username'] = $_COOKIE['user_name'];
             $data['status'] = "success";
             $data['msg'] = "成功";

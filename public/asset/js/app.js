@@ -88,7 +88,7 @@ this.ProductAll = (function () {
     S.slider=function(){
         $('#demo3').slideBox({
 
-            duration : 0.3,//滚动持续时间，单位：秒
+            duration : 1,//滚动持续时间，单位：秒
 
             easing : 'linear',//swing,linear//滚动特效
 

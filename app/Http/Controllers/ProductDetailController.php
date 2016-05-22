@@ -13,6 +13,9 @@ class ProductDetailController extends Controller
     //
     public function show($id)
     {
+        if ($id < 1){
+            return view('products')->with('username', $_COOKIE['user_name']);
+        }
         $data = [];
         $product =  Product::where("id", "=", $id)->first();
         $data['product'] = $product;

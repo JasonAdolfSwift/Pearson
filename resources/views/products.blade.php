@@ -18,7 +18,7 @@
             </a>
             <ul class="dropdown-menu pull-right">
                 <li>
-                    <a href="" class="signOut"><b>退出</b></a>
+                    <a href="/" class="signOut"><b>退出</b></a>
                 </li>
             </ul>
         </div>

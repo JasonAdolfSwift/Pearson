@@ -141,7 +141,9 @@ class RecommendProductsController extends Controller
 
         if ($pearsonArr[$similarUsr] <= 0)
         {
-            return "暂时没有商品可以推荐给您,推荐您在看商品的同时多做出一些评价～";
+            $resData['status'] = "success";
+            $resData['data'] = Product::where('id', "<", 1)->get();
+            return $resData;
         }
 
         $objUserProductArr = DB::select('select product_id from user_evalueations WHERE user_id = ?', [$_COOKIE['user_id']]);
@@ -156,9 +158,8 @@ class RecommendProductsController extends Controller
 
         if (count($preRecommendProducts) == 0)
         {
-
             $resData['status'] = "success";
-            $resData['data'] = Product::all();
+            $resData['data'] = Product::where('id', "<", 1)->get();
             return $resData;
         }
 
@@ -206,8 +207,11 @@ class User_info
         {
             $num += $this->scores[$i];
         }
-
-        $this->average = $num / $count;
+        if($count == 0){
+            $this->average = 0;
+        } else {
+            $this->average = $num / $count;
+        }
     }
 
     public function getStdDeviation()
