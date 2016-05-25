@@ -18,6 +18,7 @@ Route::get('/getProductCount', 'ShowProductsController@getProductCount');
 Route::get('/showProductsPage', 'ShowProductsController@queryProductsPage');
 Route::get('/recommend_products', 'RecommendProductsController@index');
 Route::get('/product/{id}', 'ProductDetailController@show');
+Route::get('/makeproducts', 'MakeProductsController@make');
 
 Route::post('/register/create', 'UserRegisterController@create');
 Route::post('/login', 'UserLoginController@index');
