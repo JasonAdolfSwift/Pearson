@@ -100,6 +100,10 @@ class RecommendProductsController extends Controller
                 //获得两个用户都评价过的商品id
                 $commonProductId = array_intersect($objUserProductArr,$otherUserProductArr);
 
+                if ($commonProductId == 0) {
+                    continue;
+                }
+
                 //获取当前登陆用户的评分
                 $objUser->id = $_COOKIE['user_id'];
 
@@ -180,11 +184,9 @@ class RecommendProductsController extends Controller
 
         $recommendProductId = array_keys($preScoreArr);
 
-        $recommendProductId = $recommendProductId[0];
-
-        $recommendProduct = Product::where('id', '=', $recommendProductId)->first();
-
-        $data = [];
+        for ($i=0; $i<5; $i++) {
+            $recommendProduct[$i] = Product::where('id', '=', $recommendProductId[$i])->first();
+        }
 
         $resData['status'] = "success";
         $resData['data'] = $recommendProduct;
