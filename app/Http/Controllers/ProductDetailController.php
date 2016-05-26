@@ -29,4 +29,53 @@ class ProductDetailController extends Controller
 
         return view('product_detail', $data);
     }
+
+    public function getPopularProduct()
+    {
+        $this->getAverageScore();
+
+        $products = Product::where("id", ">", 0)->get()->sortBy(function($score) {
+            return $score->average_score;
+        });
+
+        $idx = 0;
+        $top = [];
+        foreach ($products as $product) {
+            $top[$idx] = $product;
+            $idx++;
+
+            if ($idx == 8) {
+                break;
+            }
+        }
+
+        $resData['popular'] = $top;
+        return view('popular', $resData);
+    }
+
+    public function getAverageScore()
+    {
+        for ($i=1; $i<=1000; $i++)
+        {
+            $product = Product::where("id", "=", $i)->first();
+
+            $scores = User_evalueation::where("product_id", "=", $product->id)->get();
+
+            if (count($scores) < 3) {
+                continue;
+            }
+
+            $count = 0;
+            $scoreSum = 0;
+
+            foreach($scores as $score) {
+                $count++;
+                $scoreSum += $score->score;
+            }
+
+            $product->average_score = floatval($scoreSum) / $count;
+
+            $product->save();
+        }
+    }
 }

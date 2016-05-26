@@ -11,6 +11,7 @@
             </a>
         </div>
         <div class="collapse pos-rlt navbar-collapse box-shadow bg-blue">
+            <a class="btn btn-primary" href="/popluarProducts" style="width:90%; align-self: center">最受欢迎图书榜单</a>
             <a href="#" class="dropdown-toggle pull-right" data-toggle="dropdown" style="margin-top:10px ">
                 <img src="/lib/img/1.jpg" data-toggle="tooltip" data-placement="left" title="{{$username}}"  class="avatar" style="width: 40px;height: 20px;display: inline-block">
                 <span style="color:white">{{$username}}</span>
@@ -42,7 +43,8 @@
                 <input type="checkbox" class="show-all">             <i></i>         </label>     </div> 
         <div class="pull-left" style="margin-left:300px;width:600px;"> 
             <ul id="pagination" class="pagination pagination-sm"             style="width:100%;">         </ul> 
-        </div> </nav>
+        </div>
+    </nav>
     <script type="text/template" id="showModel">
         <div id="demo3" class="slideBox">
             <ul class="items">

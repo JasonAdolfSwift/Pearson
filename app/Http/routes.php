@@ -20,6 +20,7 @@ Route::get('/recommend_products', 'RecommendProductsController@index');
 Route::get('/product/{id}', 'ProductDetailController@show');
 Route::get('/makeproducts', 'MakeProductsController@make');
 Route::get('/makeusers', 'MakeProductsController@makeUser');
+Route::get('/popluarProducts', 'ProductDetailController@getPopularProduct');
 
 Route::post('/register/create', 'UserRegisterController@create');
 Route::post('/login', 'UserLoginController@index');
