@@ -50,11 +50,16 @@
         <div class="form-group"> 
           <label class="col-sm-2 control-label" style="font-size: 15px;font-weight: 600">您对该商品的评价为：</label>
          <select class="form-control" style="width: 100px;display: inline-block" name="values">
-            <option value="-1" @if ($evaluation==-1) selected @endif>不喜欢</option>
-            <option value="0" @if ($evaluation==0) selected @endif>没感觉</option>
-            <option value="1" @if ($evaluation==1) selected @endif>还不错</option>
-            <option value="2" @if ($evaluation==2) selected @endif>感兴趣</option>
-            <option value="3" @if ($evaluation==3) selected @endif>很热爱</option>
+             <option value="1" @if ($evaluation==1) selected @endif>1分</option>
+             <option value="2" @if ($evaluation==2) selected @endif>2分</option>
+             <option value="3" @if ($evaluation==3) selected @endif>3分</option>
+             <option value="4" @if ($evaluation==4) selected @endif>4分</option>
+             <option value="5" @if ($evaluation==5) selected @endif>5分</option>
+             <option value="6" @if ($evaluation==6) selected @endif>6分</option>
+             <option value="7" @if ($evaluation==7) selected @endif>7分</option>
+             <option value="8" @if ($evaluation==8) selected @endif>8分</option>
+             <option value="9" @if ($evaluation==9) selected @endif>9分</option>
+             <option value="10" @if ($evaluation==10) selected @endif>10分</option>
          </select>
             &nbsp;&nbsp;
           <button class="btn btn-info " type="submit">确认评价</button>
