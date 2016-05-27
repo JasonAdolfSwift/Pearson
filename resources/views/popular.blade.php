@@ -6,7 +6,7 @@
         <div style="width:90%; margin: 5px 500px">
             @foreach($popular as $key=>$product)
                     <div style="width:30%; text-align:center; font-size: 15px;font-weight: 600">
-                        第{{$key}}名
+                        第{{$key+1}}名
                     </div>
                     <a href="/product/{{$product->id}}">
                         <img style="width:30%;height:300px;display: inline-block;margin:5px 5px;" src="{{$product->photo_path}}">
