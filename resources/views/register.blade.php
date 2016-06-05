@@ -85,7 +85,6 @@
             }
         },'json');
     })
-    var product=new Product();
 </script>
 </body>
 </html>

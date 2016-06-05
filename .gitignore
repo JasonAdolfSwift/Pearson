@@ -6,3 +6,4 @@ Homestead.json
 .idea/
 .DS_Store
 .env
+nohup.out

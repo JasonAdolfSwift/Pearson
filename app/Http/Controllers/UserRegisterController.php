@@ -26,6 +26,20 @@ class UserRegisterController extends Controller
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
 
+        $testUser = User::where("name", "=", $user->name)->get();
+        if ($testUser != null)
+        {
+            $data['status'] = "failed";
+            $data['msg'] = "用户名已存在";
+        }
+
+        $testUser = User::where("email", "=", $user->email)->get();
+        if ($testUser != null)
+        {
+            $data['status'] = "failed";
+            $data['msg'] = "该邮箱已经被注册";
+        }
+
         if ($user->save() == true)
         {
             $data = [];
